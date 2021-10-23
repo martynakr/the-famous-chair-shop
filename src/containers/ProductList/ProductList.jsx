@@ -26,7 +26,7 @@ const ProductList = () => {
             <div className={styles.ProductList}>
                 {products && products.map((product, index) => {       
                     return (
-                  <ProductCard key={index} name={product.name} designer={product.designer} img={product.img} price={product.price_per_unit}/> )
+                  <ProductCard key={index} id={product.id} name={product.name} designer={product.designer} img={product.img} price={product.price_per_unit}/> )
             })}
             </div>
         </div>
