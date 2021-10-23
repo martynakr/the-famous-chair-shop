@@ -1,0 +1,9 @@
+@import "../../assets/typography.scss";
+
+.Button {
+	padding: 10px 20px;
+	border: none;
+	font-family: $reg-heading-font;
+	font-size: 18px;
+	font-weight: bold;
+}

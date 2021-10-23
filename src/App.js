@@ -1,9 +1,11 @@
 import './App.css';
 import Nav from './components/Nav';
 import Header from './containers/Header';
-import React from "react";
+import Carousel from './containers/Carousel/Carousel';
+import Footer from './components/Footer';
 import {
   BrowserRouter as Router, Switch,Route, NavLink, useRouteMatch, useParams } from "react-router-dom";
+import ProductList from './containers/ProductList';
 
 function App() {
   return (
@@ -13,10 +15,14 @@ function App() {
               <Switch>
                   <Route path="/">
                       <Header/>
+                      <Carousel/>
+                      <ProductList/>
+                      <Footer/>
                   </Route>
                   <Route path="/product/:id">
                   </Route>
                   <Route path="/cart">
+                    <h1>Cart</h1>
                   </Route>
                   
               </Switch>
