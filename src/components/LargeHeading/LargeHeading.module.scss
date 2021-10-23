@@ -1,0 +1,16 @@
+@import "../../assets/typography.scss";
+
+.LargeHeading {
+	font-family: $heading-font;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	padding: 20px;
+	font-size: 70px;
+}
+
+.HeadingDiv {
+	width: 60vw;
+	text-align: center;
+	margin: auto;
+}

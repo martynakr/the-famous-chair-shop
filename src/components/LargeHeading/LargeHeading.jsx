@@ -1,7 +1,10 @@
+import styles from "./LargeHeading.module.scss"
+
 const LargeHeading = ({title}) => {
+
     return (
-        <div>
-            <h1>{title}</h1>
+        <div className={styles.HeadingDiv}>
+            <h1 className={styles.LargeHeading}>{title.split(" ").join("    ")}</h1>
         </div>
     )
 }
