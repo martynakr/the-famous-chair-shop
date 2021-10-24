@@ -5,8 +5,10 @@ import LargeHeading from "../../components/LargeHeading"
 const Header = () => {
     return (
         <div className={styles.Header}>
-         <LargeHeading title="The famous chair shop"/>
-         <HeaderIllustration/>
+            <div className={styles.HeadingDiv}>
+                <LargeHeading title="The famous chair shop"/>
+            </div>
+            <HeaderIllustration/>
         </div>
     )
 }

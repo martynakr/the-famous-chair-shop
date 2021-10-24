@@ -4,7 +4,10 @@ import LargeHeading from "../../components/LargeHeading";
 import { findProduct } from "../../services/products";
 import Quantity from "../../components/Quantity";
 import Button from "../../components/Button";
+import SelectColour from "../../components/SelectColour";
 import styles from "./Product.module.scss"
+
+
 
 const Product = () => {
     const { id } = useParams();
@@ -21,7 +24,7 @@ const Product = () => {
 
    }, [id])
 
-   //fix this to lazy evaluation
+   //fix this to product &&
    if (!product) {
     return <h1>Product with Id: {id} was not found</h1>;
 }
@@ -32,11 +35,18 @@ const Product = () => {
                 <img src={product.img}/>
             </div>
             <div className={styles.ProductDesc}>
-                <LargeHeading title={product.name}/>
-                <p>{product.price}</p>
-                <p>{product.description}</p>  
-                <p>Qty:<span><Quantity/></span></p>
-                <Button>Add to cart</Button>
+                <LargeHeading margin="0" size="48px" title={product.name} align="left"/>
+                <p className={styles.Price}>${product.price_per_unit}.00</p>
+                <p>{product.description}</p> 
+                <div className={styles.Qty}>
+                    <p className={styles.Qtytext}>Colour: </p>
+                    <SelectColour colourOptions={product.colour}/>
+                </div>
+                <div className={styles.Qty}>
+                    <p className={styles.Qtytext}>Qty:</p>
+                    <Quantity/>
+                </div>
+                <Button fontColour="white" colour="#d79e01" padding="10px 80px">Add to cart</Button>
             </div>
         </div>
     )

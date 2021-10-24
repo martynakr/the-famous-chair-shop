@@ -7,9 +7,7 @@ const cleanRecord  = (docSnapshot) => ({
 
 export const getProducts = async () => {
     const colRef = firestore.collection("chairs")
-    console.log(colRef)
     const snapshot = await colRef.get() 
-    console.log(snapshot.docs)
     const docs = snapshot.docs
     return docs.map((doc) => ({
         id: doc.id,
@@ -17,6 +15,13 @@ export const getProducts = async () => {
     }))
 
 }
+
+// export const getCarouselInfo = async () => {
+//     const colRef = firestore.collection("chairs")
+//     const snapshot = await colRef.get() 
+//     const docs = snapshot.docs
+//     return docs.filter((doc) => doc.carousel_img !== undefined)
+// }
 
 
 export const findProduct = async (id) => {

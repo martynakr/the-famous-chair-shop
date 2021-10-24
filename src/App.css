@@ -1,6 +1,11 @@
 .App {
-	margin-top: 3vw;
+	margin-top: 2vw;
 	text-align: center;
 	font-family: "Urbanist", sans-serif;
 	font-size: 16px;
+}
+
+body {
+	width: 100vw;
+	overflow-x: hidden;
 }

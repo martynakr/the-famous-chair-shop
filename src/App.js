@@ -6,48 +6,46 @@ import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from "react-router-dom";
 import ProductList from './containers/ProductList';
 import Product from './containers/Product/Product';
+import Cart from './containers/Cart';
+import QuantityProvider from './context/QuantityContext';
 
 function App() {
   return (
-    // <Router>
-    //   <div className="App">
-    //         <Nav />
-    //           <Switch>
-    //               <Route path="/">
-    //                   {/* <Header/>
-    //                   <Carousel/>
-    //                   <ProductList/> */}
-    //                   <h1>Home</h1>
-    //               </Route>
-    //               <Route path="/:id">
-    //               </Route>
-    //               <Route path="/cart">
-    //                 <h1>Cart</h1>
-    //               </Route> 
-    //           </Switch>
-    //         <Footer/>
-    //     </div>
-    // </Router>   
     <div className="App">
-    <Router>
-   
-      <Nav/>
-      <Switch>
-        <Route path="/:id">
-          <Product/>
-        </Route>
-        <Route path ="/cart">
-          <h1>Cart</h1>
-          </Route>
-        <Route path ="/">
+      <Router>
+        <Nav/>
+          <Switch>
+          {/* <QuantityProvider> */}
+          <Route path ="/cart">
+              <Cart/>
+            </Route>
+            <Route path="/:id">
+              <Product/>
+            </Route>
+            
+            <Route path ="/">
                 <Header/>
                 <Carousel/>
                 <ProductList/>
-        </Route>
+            </Route>
+            {/* </QuantityProvider> */}
+          </Switch>
+        <Footer/>
+      </Router>
 
-      </Switch>
-   
-    </Router>
+{/* <Router>
+            <Nav />
+            <Switch>
+                <Route path="/:id">
+                </Route>
+                <Route path="/cart">
+                    <h1>Cart</h1>
+                </Route>
+                <Route path="/">
+                    <h1>This is the home page</h1>
+                </Route>
+            </Switch>
+        </Router> */}
     </div>
   );
 }
