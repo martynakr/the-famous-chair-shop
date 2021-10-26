@@ -2,20 +2,52 @@ import Button from "../Button/Button"
 import Quantity from "../Quantity"
 import styles from "./ProductCard.module.scss"
 import { Link } from "react-router-dom"
-import { useContext } from "react"
-import { QuantityContext } from "../../context/QuantityContext"
+import { useState, useContext } from "react"
+import { createCartItem, updateProduct } from "../../services/products"
+import { CartContext } from "../../context/CartContext"
+
 
 const ProductCard = ({name, designer, img, price, id, max}) => {
 
-    // const {count, setCount}= useContext(QuantityContext)
+ const [count, setCount] = useState(1)
+//  const [cart, setCart] = useState({
+//     id: id,
+//     qty: 1
+// })
 
-    // const handleCountChange = (newCount) => {
-    //     setCount(newCount)
-    // }
+    const {cart, setCart} = useContext(CartContext)
+    
 
-    // const des = designer
-    //onChange={handleCountChange}
-    //count={count}
+    const handleCountChange = (newCount) => {
+        setCount(newCount)
+    }
+
+   
+
+    const handleCart = async (newCount) => {
+
+        const cleaned = {
+            id: id,
+            name: name,
+            price: price,
+            qty: parseInt(count)
+        }
+
+        const partial = {
+            quantity: max - count
+        }
+
+      setCart({
+    cleaned
+    })
+
+    await createCartItem(cleaned);
+    await updateProduct(id, partial);
+    }
+
+    console.log(cart)
+    //update max
+
 
     return (
        
@@ -26,8 +58,8 @@ const ProductCard = ({name, designer, img, price, id, max}) => {
                         <p>by {designer}</p>
                     </Link>
                     <h4>${price}.00</h4>
-                    <Quantity max={max}  />
-                    <Button colour="#d79e01" fontColour="white">Add to cart</Button>
+                    <Quantity onChange={handleCountChange} count={count} max={max}  />
+                    <Button onClick={handleCart} colour="#d79e01" fontColour="white">Add to cart</Button>
                 </div>
        
     )

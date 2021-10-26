@@ -16,18 +16,35 @@ export const getProducts = async () => {
 
 }
 
-// export const getCarouselInfo = async () => {
-//     const colRef = firestore.collection("chairs")
-//     const snapshot = await colRef.get() 
-//     const docs = snapshot.docs
-//     return docs.filter((doc) => doc.carousel_img !== undefined)
-// }
-
-
 export const findProduct = async (id) => {
     const colRef = firestore.collection("chairs")
     const docRef = colRef.doc(id)
     const docSnap = await docRef.get()
     return cleanRecord(docSnap)
+
+}
+
+export const updateProduct = async (id, partial) => {
+    const colRef = firestore.collection("chairs")
+    const docRef = colRef.doc(id)
+    await docRef.update(partial)
+}
+
+
+export const getCart = async () => {
+    const colRef = firestore.collection("cart")
+    const snapshot = await colRef.get() 
+    const docs = snapshot.docs
+    return docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+    }))
+
+}
+
+export const createCartItem = async (cart) => {
+    const colRef = firestore.collection("cart")
+    const docRef = colRef.doc()
+    await docRef.set(cart)
 
 }

@@ -1,21 +1,21 @@
 import styles from "./Nav.module.scss"
 import CartIcon from "../CartIcon"
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
     return (
         <div className={styles.Nav}>
             <ul className={styles.NavItems}>
                 <li>
-                    <Link className={styles.Link} to="/" activeClassName={styles.Link_Selected}>Home</Link>
+                    <NavLink activeStyle={{fontWeight: "bold"}}className={styles.Link} exact to="/" activeClassName={styles.Link_Selected}>Home</NavLink>
                 </li>
-                <li>
+                {/* <li>
                     Top Picks</li>
-                <li>All Products</li>
+                <li>All Products</li> */}
                 <li className={styles.Icon}>
-                    <Link to="/cart">
+                    <NavLink exact to="/cart">
                         <CartIcon height="30px"/>
-                    </Link>
+                    </NavLink>
                  
                 </li>
             </ul>

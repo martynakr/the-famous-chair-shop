@@ -4,10 +4,9 @@ const SelectColour = ({colourOptions}) => {
     return (
         <div>
             <select className={styles.Select} name="colours">
-                {colourOptions.map((colour) => {
-                    console.log(colour)
+                {colourOptions.map((colour, index) => {
                 return(
-                 <option value={colour}>{colour}</option>)
+                 <option key={index} value={colour}>{colour}</option>)
 })}
             </select>
         </div>
