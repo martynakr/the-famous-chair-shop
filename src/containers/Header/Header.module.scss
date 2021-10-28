@@ -1,3 +1,5 @@
+@use "../../assets/mixins.scss";
+
 .Header {
 	margin: 50px;
 }
@@ -6,6 +8,7 @@
 	width: 60vw;
 	text-align: center;
 	margin: auto;
+
 	// 	word-wrap: normal;
 	// 	overflow-wrap: normal;
 }

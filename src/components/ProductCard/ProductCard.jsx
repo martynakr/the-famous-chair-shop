@@ -9,43 +9,40 @@ import { CartContext } from "../../context/CartContext"
 
 const ProductCard = ({name, designer, img, price, id, max}) => {
 
- const [count, setCount] = useState(1)
-//  const [cart, setCart] = useState({
-//     id: id,
-//     qty: 1
-// })
-
+    const [count, setCount] = useState(1)
+    console.log("this is count", count)
     const {cart, setCart} = useContext(CartContext)
     
 
     const handleCountChange = (newCount) => {
-        setCount(newCount)
+        setCount(newCount)   
     }
 
    
 
-    const handleCart = async (newCount) => {
+    const handleCart = async () => {
 
         const cleaned = {
             id: id,
             name: name,
             price: price,
-            qty: parseInt(count)
+            qty: count,
+            img: img
         }
 
         const partial = {
             quantity: max - count
         }
+   
+        await createCartItem(cleaned);
+        await updateProduct(id, partial);
 
-      setCart({
-    cleaned
-    })
+      setCart([...cart, {cleaned}])
 
-    await createCartItem(cleaned);
-    await updateProduct(id, partial);
+  
     }
 
-    console.log(cart)
+    console.log("this is cart", cart)
     //update max
 
 

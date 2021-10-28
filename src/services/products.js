@@ -48,3 +48,15 @@ export const createCartItem = async (cart) => {
     await docRef.set(cart)
 
 }
+
+export const deleteCartItem = async (id) => {
+    const colRef = firestore.collection("cart")
+    const docRef = colRef.doc(id)
+    await docRef.delete();
+}
+
+export const updateCart = async (id, partial) => {
+    const colRef = firestore.collection("cart")
+    const docRef = colRef.doc(id)
+    await docRef.update(partial)
+}

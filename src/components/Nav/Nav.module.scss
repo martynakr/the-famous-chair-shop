@@ -1,4 +1,5 @@
 @import "../../assets/typography.scss";
+@import "../../assets/palette.scss";
 
 .NavItems {
 	@extend %nav-text;
@@ -16,11 +17,26 @@
 	}
 }
 
-.Link {
-	text-decoration: none;
-	color: black;
+.ActiveCart {
+	stroke: #000;
+	stroke-width: 0.7px;
+	stroke-linejoin: round;
+	cursor: pointer;
+}
 
-	&_Selected {
-		font-weight: bold;
-	}
+.Incart {
+	height: 15px;
+	width: 15px;
+	background-color: $orange;
+	position: absolute;
+	z-index: 2;
+	border-radius: 15px;
+	margin-top: 6px;
+	margin-left: 28px;
+}
+
+.Empty {
+	height: 15px;
+	width: 15px;
+	background-color: none;
 }

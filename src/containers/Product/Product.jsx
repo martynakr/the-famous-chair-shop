@@ -42,6 +42,8 @@ const Product = () => {
       await updateProduct(product.id, partial);
       }
 
+    //   useEffect(() => {}, [handleCart])
+
 console.log("new cart", cart)
   
 
