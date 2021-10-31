@@ -22,7 +22,7 @@ const Product = () => {
 
     const handleCart = async () => {
 
-        const cleaned = {
+        const cartItem = {
             id: id,
             name: product.name,
             price: product.price_per_unit,
@@ -34,22 +34,66 @@ const Product = () => {
         quantity: product.quantity - count
     }
 
+        if(cart.length < 0){
+            setCart(cartItem)
+        }
+         else setCart([...cart, cartItem])
 
-        setCart( cleaned)
 
-
-      await createCartItem(cleaned);
+      await createCartItem(cartItem);
       await updateProduct(product.id, partial);
       }
 
     //   useEffect(() => {}, [handleCart])
 
-console.log("new cart", cart)
+
+
+
+
+// const handleCart = () => {
+// console.log("cart state", cart)
+//     const cartItem = {
+//         id: id,
+//         name: product.name,
+//         price: product.price_per_unit,
+//         qty: parseInt(count)
+//     }
+
+//     const cartId = cartItem.id
+
+//     // const index = cart.findIndex((n) => n.id === cartId) 
+//     // console.log("index", index)
+//     // console.log(cart.filter(n=> n.id === cartItem.id).length > 0, "filter")
+//     // console.log("cart", cart[index].qty += count)
+
+//     console.log(cart.filter(n=> n.id === cartId).length > 0, "length")
+
+
+//     if(cart.length === 0 || cart.filter(n=> n.id === cartId).lenght < 0){
+//         setCart([...cart, cartItem])
+//     }
+
+//     if(cart.filter(n=> n.id === cartId).lenght > 0) {
+//         console.log(cartItem, "cartItem")
+//         const index = cart.findIndex((n) => n.id === cartId) 
+//         console.log("index", index)
+//         setCart(cart[index].qty += count)
+//         console.log("updated cart", cart)
+
+//     } 
+       
+    
+ 
+//         // await createCartItem(cartItem);
+//         // await updateProduct(product.id, partial);
+//     }
+
   
 
+console.log("new cart", cart)
 
-    const handleCountChange = (newCount) => {
-        setCount(newCount)
+    function handleCountChange(newCount) {
+        setCount(newCount);
     }
 
    useEffect(() => {

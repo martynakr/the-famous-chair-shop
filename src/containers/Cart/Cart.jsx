@@ -1,9 +1,7 @@
 import LargeHeading from "../../components/LargeHeading"
 import { getCart, deleteCartItem, updateProduct } from "../../services/products"
 import { useEffect, useState, useContext } from "react"
-import Quantity from "../../components/Quantity"
 import Button from "../../components/Button"
-import BinIcon from "../../components/BinIcon"
 import styles from "./Cart.module.scss"
 import { CartContext } from "../../context/CartContext";
 import CartList from "../CartList"
@@ -25,9 +23,7 @@ const Cart = () => {
 
     }, [])
 
-    if (inCart === null) {
-        return <p>Your cart is empty.</p>;
-    }
+
 
 
     // const uniqueInCart = inCart.map((n) => {
@@ -55,8 +51,10 @@ const Cart = () => {
 
 // { if(inCart.lenght !== 0) {
 
-// } 
-        const total =inCart.map((n) => n.price).reduce((a,b) => a + b)
+// }  
+        
+     
+  
 
 
     
@@ -79,11 +77,19 @@ const Cart = () => {
             </div>
             <div className={styles.CartTotal}>
                 <LargeHeading size="58px" title="Cart"/>
+                {/* {inCart ?
+                <> */}
+                <>
                 <h4>Order Summary</h4>
-                <p>Subtotal: ${total}.00 </p>
+                <p>Subtotal: ${
+                // inCart.map((n) => n.price).reduce((a,b) => a + b)
+                }.00 </p>
                 <p>Shipping: FREE</p>
-                <p>TOTAL: ${total}.00 </p>
-                <Button colour="#d79e01" fontColour="white">Checkout &#62;</Button>
+                <p>TOTAL: ${
+                // inCart.map((n) => n.price).reduce((a,b) => a + b)
+                }.00 </p>
+                <Button colour="#d79e01" fontColour="white">Checkout &#62;</Button></> 
+                {/* : <p>Your cart is empty.</p>} */}
                 </div>
   
            

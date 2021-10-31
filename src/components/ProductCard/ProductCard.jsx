@@ -22,7 +22,7 @@ const ProductCard = ({name, designer, img, price, id, max}) => {
 
     const handleCart = async () => {
 
-        const cleaned = {
+        const inCart = {
             id: id,
             name: name,
             price: price,
@@ -33,13 +33,14 @@ const ProductCard = ({name, designer, img, price, id, max}) => {
         const partial = {
             quantity: max - count
         }
+
+          if(cart.length < 0){
+            setCart(inCart)
+        }
+         else setCart([...cart, inCart])
    
-        await createCartItem(cleaned);
+        await createCartItem(inCart);
         await updateProduct(id, partial);
-
-      setCart([...cart, {cleaned}])
-
-  
     }
 
     console.log("this is cart", cart)
@@ -52,7 +53,10 @@ const ProductCard = ({name, designer, img, price, id, max}) => {
                     <Link to={`/${id}`}>
                         <img src={img} alt=""/>
                         <h3>{name}</h3>
-                        <p>by {designer}</p>
+
+                        {/* {typeof designer !== "string" ? <p>by {designer}</p> : <p>by {Object.values(designer).join(", ")}</p>} */}
+                         {designer.length !== 2 ? <p>by {designer}</p> : <p>by {Object.values(designer).join(", ")}</p>} 
+                      
                     </Link>
                     <h4>${price}.00</h4>
                     <Quantity onChange={handleCountChange} count={count} max={max}  />

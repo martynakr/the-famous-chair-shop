@@ -52,7 +52,7 @@ const Carousel = () => {
                     )}
                 )}
                 <div className={styles.SlidebtnLeft} >
-                <Button onClick={nextSlide} fontSize="40px" colour="white">&#62;</Button>
+                <Button onClick={nextSlide} fontSize="40px" colour="transparent">&#62;</Button>
                 </div>
 
             </div>

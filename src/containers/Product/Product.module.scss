@@ -4,12 +4,20 @@
 	justify-content: center;
 	margin: 2.5vw;
 	overflow-y: hidden;
+
+	@media only screen and (max-width: 768px) {
+		flex-direction: column;
+	}
 }
 
 .ProductImg {
 	width: 50%;
 	box-shadow: -1px 0px 8px 3px rgba(0, 0, 0, 0.1);
 	margin: 20px;
+
+	@media only screen and (max-width: 768px) {
+		width: 80%;
+	}
 }
 
 .ProductDesc {
@@ -21,6 +29,9 @@
 	text-align: left;
 	justify-content: space-around;
 	overflow-x: hidden;
+	@media only screen and (max-width: 768px) {
+		width: 80%;
+	}
 }
 
 img {

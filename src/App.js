@@ -1,4 +1,4 @@
-import './App.css';
+import styles from'./App.scss';
 import Nav from './components/Nav';
 import Header from './containers/Header';
 import Carousel from './containers/Carousel/Carousel';
