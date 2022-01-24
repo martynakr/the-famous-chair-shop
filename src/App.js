@@ -6,19 +6,13 @@ import Footer from './components/Footer';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from "react-router-dom";
 import ProductList from './containers/ProductList';
 import Product from './containers/Product/Product';
-import Cart from './containers/Cart';
-import CartProvider from './context/CartContext';
 
 function App() {
   return (
-    <CartProvider>
       <div className="App">
         <Router>
           <Nav/>
             <Switch>
-            <Route exact path ="/cart">
-                <Cart/>
-              </Route>
               <Route exact path="/:id">
                 <Product/>
               </Route>
@@ -31,7 +25,6 @@ function App() {
           <Footer/>
         </Router>
       </div>
-    </CartProvider>
   );
 }
 
